@@ -10,21 +10,22 @@ export const Formulario = () => {
     const [nombrePropietario, setNombrePropietario] = useState('');
     const [email, setEmail] = useState('');
     const [fecha, setFecha] = useState('');
-    const [sintomas, setSintomas] = useState('')
+    const [sintomas, setSintomas] = useState('');
+
+    const [error, setError] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         //Validación del formulario
-        if([nombre, propietario, email, fecha, sintomas].includes('')){
+        if ([nombre, propietario, email, fecha, sintomas].includes('')) {
             console.log('Todos los campos deben estar complimentados');
-            return
-        }else{
-            console.log('OK!');
-        }
+            setError(true);
+            return;
+        } 
 
+        setError(false)
 
-        console.log('Enviando formulario...');
     }
 
 
@@ -37,9 +38,14 @@ export const Formulario = () => {
                 Añade pacientes y {' '} <span className='text-indigo-600 font-bold'>Administralos</span>
             </p>
 
-            <form 
+            <form
                 onSubmit={handleSubmit}
                 action="" className="bg-white shadow-md hover:shadow-sm transition-all rounded py-8 px-4 mt-8 mb-10">
+                {error && (
+                            <div className="bg-red-100 text-red-700 text-center p-2 rounded-lg">
+                                <p >debes rellenar todos los campos</p>
+                            </div>
+                )}
                 <div className='mb-6'>
                     <label
                         htmlFor="mascota"
@@ -51,7 +57,7 @@ export const Formulario = () => {
                         className="border-2 w-full mt-2 placeholder-cyan-600 px-2 round-m"
                         value={nombre}
                         onChange={(e) => setNombre(e.target.value)}
-                        />
+                    />
                 </div>
                 <div className='mb-6'>
                     <label
@@ -61,11 +67,11 @@ export const Formulario = () => {
                         id="propietario"
                         type="text"
                         placeholder="Nombre del propietario"
-                        className="border-2 w-full mt-2 placeholder-cyan-600 px-2 round-m" 
+                        className="border-2 w-full mt-2 placeholder-cyan-600 px-2 round-m"
                         value={nombrePropietario}
                         onChange={(e) => setNombrePropietario(e.target.value)}
-                        />
-                        
+                    />
+
                 </div>
                 <div className='mb-6'>
                     <label
@@ -78,7 +84,7 @@ export const Formulario = () => {
                         className="border-2 w-full mt-2 placeholder-cyan-600 px-2 round-m"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        />
+                    />
                 </div>
                 <div className='mb-6'>
                     <label
@@ -90,7 +96,7 @@ export const Formulario = () => {
                         className="border-2 w-full mt-2 placeholder-cyan-600 px-2 rounded"
                         value={fecha}
                         onChange={(e) => setFecha(e.target.value)}
-                        />
+                    />
                 </div>
                 <div className='mb-6'>
                     <label
@@ -105,14 +111,14 @@ export const Formulario = () => {
                         placeholder='Describe los síntomas'
                         value={sintomas}
                         onChange={(e) => setSintomas(e.target.value)}
-                        >
-                            
+                    >
+
                     </textarea>
                 </div>
 
-                <input 
+                <input
                     type="submit"
-                    className="bg-indigo-600 w-full text-white uppercase font-bold p-2 hover:bg-indigo-500 cursor-pointer transition-all" 
+                    className="bg-indigo-600 w-full text-white uppercase font-bold p-2 hover:bg-indigo-500 cursor-pointer transition-all"
                     value="Agregar paciente" />
             </form>
         </div>
