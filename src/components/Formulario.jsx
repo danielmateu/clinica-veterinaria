@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 
 
-export const Formulario = () => {
+export const Formulario = ({pacientes, setPacientes}) => {
 
     const [nombre, setNombre] = useState('');
     const [nombrePropietario, setNombrePropietario] = useState('');
@@ -26,6 +26,27 @@ export const Formulario = () => {
 
         setError(false)
 
+        //Objeto de Paciente
+        const objetoPaciente = {
+            nombre,
+            propietario,
+            email,
+            fecha,
+            sintomas
+        }
+
+        // console.log(objetoPaciente);
+
+        // setPacientes(objetoPaciente);
+        setPacientes([...pacientes, objetoPaciente]);
+
+        //Reiniciar el Form
+        setNombre('');
+        setNombrePropietario('');
+        setEmail('');
+        setFecha('');
+        setSintomas('');
+
     }
 
 
@@ -42,7 +63,7 @@ export const Formulario = () => {
                 onSubmit={handleSubmit}
                 action="" className="bg-white shadow-md hover:shadow-sm transition-all rounded py-8 px-4 mt-8 mb-10">
                 {error && (
-                            <div className="bg-red-100 text-red-700 text-center p-2 rounded-lg">
+                            <div className="bg-red-100 text-red-700 text-center p-2 rounded-lg mb-2">
                                 <p >debes rellenar todos los campos</p>
                             </div>
                 )}
