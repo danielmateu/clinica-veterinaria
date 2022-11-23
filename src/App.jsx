@@ -1,4 +1,4 @@
-import { Formulario, Header } from "./components";
+import { Formulario, Header, ListadoPacientes } from "./components";
 
 
 function App() {
@@ -6,10 +6,13 @@ function App() {
 
 
   return (
-    <>
-      <Header/>
-      <Formulario/>
-    </>
+    <div className="container mx-auto mt-20">
+      <Header />
+      <div className="mt-2 md:flex ">
+        <Formulario />
+        <ListadoPacientes />
+      </div>
+    </div>
   )
 }
 
