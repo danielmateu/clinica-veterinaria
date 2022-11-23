@@ -15,6 +15,15 @@ export const Formulario = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        //Validación del formulario
+        if([nombre, propietario, email, fecha, sintomas].includes('')){
+            console.log('Todos los campos deben estar complimentados');
+            return
+        }else{
+            console.log('OK!');
+        }
+
+
         console.log('Enviando formulario...');
     }
 
