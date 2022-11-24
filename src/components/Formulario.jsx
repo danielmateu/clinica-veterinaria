@@ -13,7 +13,15 @@ export const Formulario = ({pacientes, setPacientes}) => {
     const [fecha, setFecha] = useState('');
     const [sintomas, setSintomas] = useState('');
 
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
+
+    const generarID = () => {
+
+        const fecha = Date.now().toString(36);
+        const random = Math.random().toString(36).substring(2);
+
+        return fecha + random;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +41,8 @@ export const Formulario = ({pacientes, setPacientes}) => {
             nombrePropietario,
             email,
             fecha,
-            sintomas
+            sintomas,
+            id: generarID()
         }
 
         // console.log(objetoPaciente);

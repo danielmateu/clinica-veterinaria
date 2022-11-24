@@ -1,9 +1,9 @@
 
-import { Paciente } from './Paciente'
+import { Paciente } from './Paciente';
+
 
 export const ListadoPacientes = ({ pacientes }) => {
-
-    // console.log(pacientes);
+    
 
     return (
 
@@ -17,9 +17,9 @@ export const ListadoPacientes = ({ pacientes }) => {
 
             {
                 pacientes.length !== 0 ?
-                pacientes.map( (paciente, index) => (
+                pacientes.map( paciente => (
                     <Paciente
-                        key={index}
+                        key={paciente.id}
                         paciente={paciente}
                     />
                 )) : (
