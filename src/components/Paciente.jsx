@@ -1,8 +1,12 @@
 
 
-export const Paciente = ({paciente}) => {
 
-    const {nombre, nombrePropietario, email, fecha, sintomas} = paciente
+export const Paciente = ({paciente, setPaciente}) => {
+
+    const {nombre, nombrePropietario, email, fecha, sintomas} = paciente;
+
+   
+    
 
     return (
         
@@ -27,6 +31,16 @@ export const Paciente = ({paciente}) => {
                     Síntomas: {' '}
                     <span className='font-normal normal-case'>{sintomas}</span>
                 </p>
+
+                <div>
+                    <button
+                        onClick={()=> setPaciente(paciente)}
+                        type='button'
+                        className='py-2 px-10 bg-indigo-400 hover:bg-indigo-200 transition-all  rounded-lg'>editar</button>
+                    <button 
+                        type='button' 
+                        className='py-2 px-10 bg-red-400 hover:bg-red-200 transition-all ml-2 rounded-lg'>eliminar</button>
+                </div>
             </div>
         
     )

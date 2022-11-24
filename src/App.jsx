@@ -4,7 +4,8 @@ import { Formulario, Header, ListadoPacientes } from "./components";
 
 function App() {
 
-  const [pacientes, setPacientes] = useState([])
+  const [pacientes, setPacientes] = useState([]);
+  const [paciente, setPaciente] = useState({});
 
 
   return (
@@ -15,9 +16,11 @@ function App() {
         <Formulario 
           pacientes={pacientes}
           setPacientes = {setPacientes}
+          paciente = {paciente}
         />
         <ListadoPacientes 
           pacientes={pacientes}
+          setPaciente = {setPaciente}
         />
       </div>
     </div>

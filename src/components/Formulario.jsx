@@ -2,10 +2,7 @@ import { useEffect, useState } from "react"
 import { Error } from "./";
 
 
-
-
-
-export const Formulario = ({pacientes, setPacientes}) => {
+export const Formulario = ({ pacientes, setPacientes, paciente }) => {
 
     const [nombre, setNombre] = useState('');
     const [nombrePropietario, setNombrePropietario] = useState('');
@@ -14,6 +11,24 @@ export const Formulario = ({pacientes, setPacientes}) => {
     const [sintomas, setSintomas] = useState('');
 
     const [error, setError] = useState(false);
+
+    useEffect(() => {
+
+        if(Object.keys(paciente).length > 0){
+            setNombre(paciente.nombre)
+            setNombrePropietario(paciente.nombrePropietario)
+            setEmail(paciente.email)
+            setFecha(paciente.fecha)
+            setSintomas(paciente.sintomas)
+        }
+
+
+    }, [paciente]);
+
+    
+
+
+
 
     const generarID = () => {
 
@@ -31,7 +46,7 @@ export const Formulario = ({pacientes, setPacientes}) => {
             console.log('Todos los campos deben estar complimentados');
             setError(true);
             return;
-        } 
+        }
 
         setError(false)
 
