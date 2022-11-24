@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Error } from "./";
 
 
 
@@ -18,7 +19,7 @@ export const Formulario = ({pacientes, setPacientes}) => {
         e.preventDefault();
 
         //Validación del formulario
-        if ([nombre, propietario, email, fecha, sintomas].includes('')) {
+        if ([nombre, nombrePropietario, email, fecha, sintomas].includes('')) {
             console.log('Todos los campos deben estar complimentados');
             setError(true);
             return;
@@ -29,7 +30,7 @@ export const Formulario = ({pacientes, setPacientes}) => {
         //Objeto de Paciente
         const objetoPaciente = {
             nombre,
-            propietario,
+            nombrePropietario,
             email,
             fecha,
             sintomas
@@ -62,11 +63,7 @@ export const Formulario = ({pacientes, setPacientes}) => {
             <form
                 onSubmit={handleSubmit}
                 action="" className="bg-white shadow-md hover:shadow-sm transition-all rounded py-8 px-4 mt-8 mb-10">
-                {error && (
-                            <div className="bg-red-100 text-red-700 text-center p-2 rounded-lg mb-2">
-                                <p >debes rellenar todos los campos</p>
-                            </div>
-                )}
+                {error && <Error><p>Todos los campos son obligatorios</p></Error>}
                 <div className='mb-6'>
                     <label
                         htmlFor="mascota"
