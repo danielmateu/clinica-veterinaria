@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Paciente } from './Paciente';
 
 
-export const ListadoPacientes = ({ pacientes, setPaciente }) => {
+export const ListadoPacientes = ({ pacientes, setPaciente, eliminarPaciente }) => {
 
     useEffect(() => {
         if(pacientes.length > 0){
@@ -30,6 +30,7 @@ export const ListadoPacientes = ({ pacientes, setPaciente }) => {
                         key={paciente.id}
                         paciente={paciente}
                         setPaciente = {setPaciente}
+                        eliminarPaciente = {eliminarPaciente}
                     />
                 )) : (
                     <div className='font-black text-3xl text-center p-10 bg-slate-200 mt-8 shadow-md hover:shadow-sm transition-all'>
